@@ -101,13 +101,16 @@
       var todays_date = new Date();
       var hour    = parseInt(todays_date.getHours());
       var minute  = parseInt(todays_date.getMinutes());
-      if (hour > 12) {
+      if (hour >= 12) {
         hour = hour - 12;
       }
       if (hour == 0) {
-        hour = 12;
+        hour = 0;
       }
       minute = Math.floor(minute / 5);
+      if (minute == 12) {
+        minute = 0;
+      }
       computeFibanacciDigits("h",hour);
       computeFibanacciDigits("m",minute);
       var boxID = ["box-1-top","box-1-bottom","box-2","box-3","box-5"];
