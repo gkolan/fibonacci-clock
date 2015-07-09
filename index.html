@@ -30,11 +30,14 @@
     }
     table {
       display: block;
-      margin:auto;
-      border: 3px solid black;
+      margin-left:auto;
+      margin-right:auto;
+      padding: 0px;
+      border: 10px solid #FFFFFF;
     }
     th, td {
       border: 2px solid black;
+      padding: 0px;
     }
     .container {
       display: block;
@@ -42,23 +45,30 @@
       margin-right: auto;
     }
     #box-1-top {
-      min-width: 160px;
-      min-height: 120px;
+      width: 160px;
+      height: 120px;
     }
     #box-1-bottom {
-      min-width: 160px;
-      min-height: 120px;
+      width: 160px;
+      height: 120px;
     }
     #box-2 {
-      min-width: 160px;
-      min-height: 240px;
+      width: 160px;
+      height: 240px;
     }
     #box-5 {
-      min-width: 320px;
+      width: 480px;
+      height: 480px;
     }
     #box-3 {
-      min-width: 320px;
-      min-height: 240px;
+      width: 320px;
+      height: 240px;
+    }
+    .border-image {
+      border: 20px solid transparent;
+      -webkit-border-image: url("img/wood-texture.jpg") 50 round; /* Safari 3.1-5 */
+      -o-border-image: url("img/wood-texture.jpg") 50 round; /* Opera 11-12.1 */
+      border-image: url("img/wood-texture.jpg") 50 round;
     }
     a:link, a:visited, a:hover, a:active { color: #000 }
     </style>
@@ -68,10 +78,9 @@
     }, 60000);
     function computeColors () {
       function computeFibanacciDigits(type,number) {
-        while (number > 0) {
           if (number == 12) {
             number = number - 1;
-            document.getElementById("box-1-bottom").innerHTML += type + "1";
+            document.getElementById("box-1-top").innerHTML += type + "1";
           } 
           if (number >= 5) {
             number = number - 5;
@@ -87,9 +96,8 @@
           }
           if (number == 1) {
             number = number - 1;
-            document.getElementById("box-1-top").innerHTML += type + "1";
+            document.getElementById("box-1-bottom").innerHTML += type + "1";
           }
-        }
       }
       var todays_date = new Date();
       var hour    = parseInt(todays_date.getHours());
@@ -106,16 +114,16 @@
       var boxID = ["box-1-top","box-1-bottom","box-2","box-3","box-5"];
       for (var i = 0; i < boxID.length; i++) {
         if (document.getElementById(boxID[i]).innerHTML.length == 0) {
-          document.getElementById(boxID[i]).style.backgroundColor ="#FFF";
+          document.getElementById(boxID[i]).style.backgroundColor ="#FFFFFF";
         }
         var value = document.getElementById(boxID[i]).innerHTML.replace(/[0-9]/g, '');
         document.getElementById(boxID[i]).innerHTML = "";
         if (value == "m") {
-          document.getElementById(boxID[i]).style.backgroundColor ="#4effa7";
+          document.getElementById(boxID[i]).style.backgroundColor ="#4EFFA7";
         } else if (value == "h") {
-          document.getElementById(boxID[i]).style.backgroundColor ="#ff4e4e";
+          document.getElementById(boxID[i]).style.backgroundColor ="#FF4E4E";
         } else if (value == "hm") {
-          document.getElementById(boxID[i]).style.backgroundColor ="#4ea7ff";
+          document.getElementById(boxID[i]).style.backgroundColor ="#4EA7FF";
         }
       }
     }
@@ -124,17 +132,17 @@
   <body  onload="computeColors();">
     <div class="container">
       <div class="title-text">Philippe Chretien's Fibonacci Clock</div>
-      <table style="width:100%; height:100%;">
+      <table class="border-image">
         <tr>
             <th rowspan="2" colspan="1" id="box-2"></th>
             <th rowspan="1" colspan="1" id="box-1-top"></th>
-            <th rowspan="4" colspan="2" id="box-5"></th>
+            <th rowspan="4" colspan="3" id="box-5"></th>
         </tr>
         <tr>
             <th rowspan="1" colspan="1" id="box-1-bottom"></th>
         </tr>
         <tr>
-            <th colspan="2" rowspan="2" id="box-3"></th>
+            <th rowspan="2" colspan="2" id="box-3"></th>
         </tr>
       </table>
       <div class="footer-text">
