@@ -109,6 +109,7 @@
           document.getElementById(boxID[i]).style.backgroundColor ="#FFF";
         }
         var value = document.getElementById(boxID[i]).innerHTML.replace(/[0-9]/g, '');
+        document.getElementById(boxID[i]).innerHTML = "";
         if (value == "m") {
           document.getElementById(boxID[i]).style.backgroundColor ="#4effa7";
         } else if (value == "h") {
