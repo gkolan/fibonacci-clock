@@ -9,23 +9,24 @@
     <title>Philippe Chretien Fibonacci Clock | Gautam Kolan</title>
     <style type="text/css">
     body {
-      background-color: #444;
+      background-color: #ACACAC;
+      background-image: url("img/noisy_grid.png");
       font-family:'Comic Sans MS',cursive;
     }
     .title-text {
       font-size: 32px;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 60px;
     }
     .footer-text {
       font-size: 18px;
       text-align: center;
-      margin-top: 50px; 
+      margin-top: 100px; 
     }
     .container {
       width: 800px;
       height:600px;
-      margin-top:100px;
+      margin-top:80px;
     }
     table {
       display: block;
@@ -39,18 +40,6 @@
       display: block;
       margin-left:auto;
       margin-right: auto;
-    }
-    .glossy-red {
-      background-color: #ff4e4e;
-    }
-    .glossy-green {
-      background-color: #4effa7;
-    }
-    .glossy-blue {
-      background-color: #4ea7ff;
-    }
-    .white {
-      background-color: #fff;
     }
     #box-1-top {
       min-width: 160px;
@@ -79,35 +68,28 @@
     }, 60000);
     function computeColors () {
       function computeFibanacciDigits(type,number) {
-        var digits = [];
         while (number > 0) {
+          if (number == 12) {
+            number = number - 1;
+            document.getElementById("box-1-bottom").innerHTML += type + "1";
+          } 
           if (number >= 5) {
-            digits.push(number);
             number = number - 5;
             document.getElementById("box-5").innerHTML += type + "5";
           }
           if (number >= 3) {
-            digits.push(number);
             number = number - 3;
-            document.getElementById("box3").innerHTML += type + "3";
+            document.getElementById("box-3").innerHTML += type + "3";
           }
           if (number >= 2) {
-            digits.push(number);
             number = number - 2;
             document.getElementById("box-2").innerHTML += type + "2";
           }
           if (number == 1) {
-            digits.push(number);
             number = number - 1;
             document.getElementById("box-1-top").innerHTML += type + "1";
           }
-          if (number == 1) {
-            digits.push(number);
-            number = number - 1;
-            document.getElementById("box-1-bottom").innerHTML += type + "1";
-          }
         }
-        return digits
       }
       var todays_date = new Date();
       var hour    = parseInt(todays_date.getHours());
@@ -121,13 +103,12 @@
       minute = Math.floor(minute / 5);
       computeFibanacciDigits("h",hour);
       computeFibanacciDigits("m",minute);
-      var boxID = ["box-1-top","box-1-bottom","box-2","box3","box-5"];
+      var boxID = ["box-1-top","box-1-bottom","box-2","box-3","box-5"];
       for (var i = 0; i < boxID.length; i++) {
         if (document.getElementById(boxID[i]).innerHTML.length == 0) {
           document.getElementById(boxID[i]).style.backgroundColor ="#FFF";
         }
         var value = document.getElementById(boxID[i]).innerHTML.replace(/[0-9]/g, '');
-        document.getElementById(boxID[i]).innerHTML = "";
         if (value == "m") {
           document.getElementById(boxID[i]).style.backgroundColor ="#4effa7";
         } else if (value == "h") {
@@ -152,10 +133,13 @@
             <th rowspan="1" colspan="1" id="box-1-bottom"></th>
         </tr>
         <tr>
-            <th colspan="2" rowspan="2" id="box3"></th>
+            <th colspan="2" rowspan="2" id="box-3"></th>
         </tr>
       </table>
-      <div class="footer-text"><a href="https://www.kickstarter.com/projects/basbrun/fibonacci-clock-an-open-source-clock-for-nerds-wit" target="_blank">Kickstarter Campaign</a></div>
+      <div class="footer-text">
+        <a href="https://www.kickstarter.com/projects/basbrun/fibonacci-clock-an-open-source-clock-for-nerds-wit" target="_blank">Kickstarter Campaign</a> | 
+        <a href="http://www.theguardian.com/science/alexs-adventures-in-numberland/2015/may/09/fibonacci-clock-can-you-tell-the-time-on-the-worlds-most-stylish-nerd-timepiece" target="_blank">How to calculate time?</a>
+      </div>
     </div>
     <script type="text/javascript">
             var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -169,3 +153,29 @@
           </script>    
   </body>
 </html>
+<!--
+
+        while (number > 0) {
+          if (number > 5) {
+            number = number - 5;
+            document.getElementById("box-5").innerHTML += type + "5";
+          }
+          if (number > 3) {
+            number = number - 3;
+            document.getElementById("box-3").innerHTML += type + "3";
+          }
+          if (number > 2) {
+            number = number - 2;
+            document.getElementById("box-2").innerHTML += type + "2";
+          }
+          if (number == 2) {
+            number = number - 2;
+            document.getElementById("box-1-top").innerHTML += type + "1";
+            document.getElementById("box-1-bottom").innerHTML += type + "1";
+          }
+          if (number = 1) {
+            number = number - 1;
+            document.getElementById("box-1-top").innerHTML += type + "1";
+          } 
+        }
+-->
