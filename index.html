@@ -101,7 +101,7 @@
       var todays_date = new Date();
       var hour    = parseInt(todays_date.getHours());
       var minute  = parseInt(todays_date.getMinutes());
-      if (hour >= 12) {
+      if (hour > 12) {
         hour = hour - 12;
       }
       if (hour == 0) {
@@ -149,18 +149,29 @@
       </table>
       <div class="footer-text">
         <a href="https://www.kickstarter.com/projects/basbrun/fibonacci-clock-an-open-source-clock-for-nerds-wit" target="_blank">Kickstarter Campaign</a> | 
-        <a href="http://www.theguardian.com/science/alexs-adventures-in-numberland/2015/may/09/fibonacci-clock-can-you-tell-the-time-on-the-worlds-most-stylish-nerd-timepiece" target="_blank">How to calculate time?</a>
+        <a href="http://www.theguardian.com/science/alexs-adventures-in-numberland/2015/may/09/fibonacci-clock-can-you-tell-the-time-on-the-worlds-most-stylish-nerd-timepiece" target="_blank">How to calculate time?</a> | 
+        <a href="https://www.kickstarter.com/projects/basbrun/fibonacci-clock-an-open-source-clock-for-nerds-wit" target="_blank">Need Help?</a>
       </div>
     </div>
     <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-56850463-1");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>    
+      function toggle_visibility(id) 
+      {
+        var e = document.getElementById(id);
+        if ( e.style.display == 'block' )
+            e.style.display = 'none';
+        else
+            e.style.display = 'block';
+      }
+    </script>
+    <script type="text/javascript">
+      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+    </script>
+    <script type="text/javascript">
+      try {
+        var pageTracker = _gat._getTracker("UA-56850463-1");
+        pageTracker._trackPageview();
+      } catch(err) {}
+    </script>    
   </body>
 </html>
