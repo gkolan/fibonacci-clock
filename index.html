@@ -4,22 +4,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="author" content="Gautam Kolan">
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Slab' rel='stylesheet' type='text/css'>
     <link rel="icon" href="">
     <title>Philippe Chretien Fibonacci Clock | Gautam Kolan</title>
     <style type="text/css">
     body {
       background-color: #ACACAC;
       background-image: url("img/noisy_grid.png");
-      font-family:'Comic Sans MS',cursive;
+      font-family: 'Josefin Slab', serif;
     }
     .title-text {
-      font-size: 32px;
+      font-size: 48px;
       text-align: center;
       margin-bottom: 60px;
     }
     .footer-text {
-      font-size: 18px;
+      font-size: 24px;
       text-align: center;
       margin-top: 100px; 
     }
@@ -69,13 +70,17 @@
       -o-border-image: url("img/wood-texture.jpg") 50 round; /* Opera 11-12.1 */
       border-image: url("img/wood-texture.jpg") 50 round;
     }
-    a:link, a:visited, a:hover, a:active { color: #000 }
+    a:link, a:visited, a:hover, a:active { color: #000; text-decoration: none; }
     </style>
     <script>
-    setTimeout(function(){
-      window.location.reload(1);
-    }, 60000);
-    function computeColors () {
+    function refreshAndComputeColors () {
+      // Refresh every 5 minutes
+      // http://stackoverflow.com/questions/30505226/jquery-auto-refresh-page-on-clock-time
+      // Adding 10 mil sec to  ~ rkrara ~ code
+      var d = new Date(), min = d.getMinutes(), sec = d.getSeconds();
+      var timeout = (((5-(min%5))*60)-sec)*1000 + 10;
+      setTimeout(function(){window.location.reload(1);}, timeout);
+
       function computeFibanacciDigits(type,number) {
           if (number == 12) {
             number = number - 1;
@@ -131,7 +136,7 @@
     }
     </script>
   </head>
-  <body onload="computeColors();">
+  <body onload="refreshAndComputeColors();">
     <div class="container">
       <div class="title-text">Philippe Chretien's Fibonacci Clock</div>
       <table class="border-image">
@@ -148,7 +153,7 @@
         </tr>
       </table>
       <div class="footer-text">
-        <a href="https://www.kickstarter.com/projects/basbrun/fibonacci-clock-an-open-source-clock-for-nerds-wit" target="_blank">Kickstarter Campaign</a> | 
+        <a href="https://www.kickstarter.com/projects/basbrun/fibonacci-clock-an-open-source-clock-for-nerds-wit" target="_blank">Go to Kickstarter Campaign</a> | 
         <a href="http://www.theguardian.com/science/alexs-adventures-in-numberland/2015/may/09/fibonacci-clock-can-you-tell-the-time-on-the-worlds-most-stylish-nerd-timepiece" target="_blank">How to calculate time?</a>
       </div>
     </div>
