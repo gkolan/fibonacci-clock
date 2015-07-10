@@ -101,7 +101,7 @@
       var todays_date = new Date();
       var hour    = parseInt(todays_date.getHours());
       var minute  = parseInt(todays_date.getMinutes());
-      if (hour >= 12) {
+      if (hour > 12) {
         hour = hour - 12;
       }
       if (hour == 0) {
